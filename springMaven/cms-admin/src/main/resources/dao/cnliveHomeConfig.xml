@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.cnlive.mapper.CnliveHomeMapper">
+    <resultMap id="BaseResultMap" type="com.cnlive.dao.CnliveHomeBean">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="pwd" property="pwd" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="home" property="home" jdbcType="VARCHAR"/>
+        <result column="info" property="info" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <sql id="Base_column_List">
+        id, name, pwd, sex, home, info
+    </sql>
+
+    <select id="selectHomeMapper" resultMap="BaseResultMap">
+        select *
+        from
+        t_user
+    </select>
+
+    <select id="selectBeanById" resultMap="BaseResultMap">
+        select *
+        from t_user
+        where
+        id=#{id}
+    </select>
+
+    <insert id="insertHomeMapper" parameterType="com.cnlive.dao.CnliveHomeBean">
+        insert IGNORE into
+        t_user
+        (id,name,pwd,sex,home,info)
+        values
+        (#{id},#{name},#{pwd},#{sex},#{home},#{info})
+    </insert>
+
+    <update id="updateHomeMapper" parameterType="com.cnlive.dao.CnliveHomeBean">
+        update t_user
+        set
+        name = #{name}
+        where
+        id = #{id}
+    </update>
+
+    <delete id="delectHomeByName" parameterType="com.cnlive.dao.CnliveHomeBean">
+        delete from
+        t_user
+        where
+        name=#{name}
+    </delete>
+
+</mapper>
