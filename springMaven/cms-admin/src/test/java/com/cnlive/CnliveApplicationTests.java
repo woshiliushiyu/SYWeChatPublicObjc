@@ -27,12 +27,12 @@ public class CnliveApplicationTests {
 	public void testAction() {
 		System.out.println("插入");
 		CnliveHomeBean bean = new CnliveHomeBean();
-		bean.setId(3);
-		bean.setName("王五");
-		bean.setPwd("666666");
-		bean.setHome("上海");
-		bean.setInfo("上海土著");
-		bean.setSex("未知");
+		bean.setId(4);
+		bean.setName("王五s");
+		bean.setPwd("666666s");
+		bean.setHome("上海s");
+		bean.setInfo("上海土著s");
+		bean.setSex("未知s");
 
 		cnliveHomeService.insertHome(bean);
 	}

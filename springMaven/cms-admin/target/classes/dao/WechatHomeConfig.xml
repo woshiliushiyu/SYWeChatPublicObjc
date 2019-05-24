@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cnlive.mapper.WechatHomeMapper">
+    <resultMap id="WechatBaseResultMapper" type="com.cnlive.dao.WechatHomeBean">
+
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="resName" property="resName" jdbcType="VARCHAR"/>
+        <result column="resDesc" property="resDesc" jdbcType="VARCHAR"/>
+        <result column="resType" property="resType" jdbcType="VARCHAR"/>
+        <result column="resImage" property="resImage" jdbcType="VARCHAR"/>
+        <result column="resUrl" property="resUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectByContent" resultMap="WechatBaseResultMapper">
+        select *
+        from t_wechat
+        where
+        content = #{content}
+    </select>
+
+</mapper>
