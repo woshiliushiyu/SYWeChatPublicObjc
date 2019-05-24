@@ -1,7 +1,9 @@
 package com.cnlive.dao.outputMessage;
 
 import com.cnlive.util.ResponseMessageType;
+import lombok.Data;
 
+@Data
 public class TextMessage extends BaseOutputMessage {
 
     // 文本消息

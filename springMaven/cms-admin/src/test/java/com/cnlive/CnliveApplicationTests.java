@@ -3,6 +3,7 @@ package com.cnlive;
 import com.alibaba.fastjson.JSON;
 import com.cnlive.dao.CnliveHomeBean;
 import com.cnlive.servers.CnliveHomeService;
+import com.cnlive.servers.WebChatService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class CnliveApplicationTests {
 
 	@Autowired
 	private CnliveHomeService cnliveHomeService;
+
+	@Autowired
+	private WebChatService webChatService;
 
 	@Test
 	public void contextLoads() {
@@ -36,6 +40,13 @@ public class CnliveApplicationTests {
 
 		cnliveHomeService.insertHome(bean);
 	}
+
+	@Test
+	public void testWechat() {
+		System.out.println("微信数据插入");
+		webChatService.insertData(2,"驻马店","这件事，影响驻马店800万人，现在有了最新进展…","text","https://mmbiz.qpic.cn/mmbiz_jpg/Pv6omTj9lHxwhyb3zVaXTicVUOkpb9fcZHUVBULFtiaS45uwib6L11UB0P32D4HsKC2ZFf6FqRG0iaXibuHBl29FiaXg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1","https://mp.weixin.qq.com/s?__biz=MzI1ODc4NDIwOQ==&mid=2247494307&scene=1&srcid=","河南省交通重点项目和高速公路“双千工程”进展顺利，今年年内河南省4条高速全长339公里以及2座跨越黄河的大桥将建成通车。");
+	}
+
 
 	@Test
 	public void testUpdateAction() {

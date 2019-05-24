@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 public interface WechatHomeMapper {
 
     WechatHomeBean selectByContent(String name);
+
+    void insertIntoWithContent(WechatHomeBean homeBean);
 }

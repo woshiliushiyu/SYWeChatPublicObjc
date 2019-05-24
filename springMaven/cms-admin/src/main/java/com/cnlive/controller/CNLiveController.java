@@ -58,6 +58,8 @@ public class CNLiveController {
         cnliveHomeService.updataHome(name,id);
     }
 
+
+
     /**
      * 对微信请求进行验证
      * @param request
