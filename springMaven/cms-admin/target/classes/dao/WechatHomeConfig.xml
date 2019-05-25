@@ -19,4 +19,11 @@
         content = #{content}
     </select>
 
+    <insert id="insertIntoWithContent" parameterType="com.cnlive.dao.WechatHomeBean">
+        insert IGNORE into t_wechat
+        (id,content,resName,resType,resDesc,resImage,resUrl)
+        values
+        (#{id},#{content},#{resName},#{resType},#{resDesc},#{resImage},#{resUrl})
+    </insert>
+
 </mapper>

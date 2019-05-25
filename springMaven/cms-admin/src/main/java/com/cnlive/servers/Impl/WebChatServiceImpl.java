@@ -38,6 +38,8 @@ public class WebChatServiceImpl implements WebChatService {
             //获取消息内容
             String msgContent = map.get("Content");
 
+            System.out.println("客户端发来的消息进行打印"+map.toString());
+
             if (MsgType.equals(ResponseMessageType.TEXT_MESSAGE)) {
 
                 NewsOutputMessage message01 = new NewsOutputMessage();
@@ -63,8 +65,9 @@ public class WebChatServiceImpl implements WebChatService {
                     message01.setArticles(list);
                     respXml = ReplyMessageUtil.sendImageTextMessage(message01);
                 } else {
-                    respXml = respWithXml(fromUserName,toUserName,MsgType,msgContent);
+                    respXml = respWithXml(fromUserName, toUserName, MsgType, msgContent);
                 }
+
             } else {
                 respXml = respWithXml(fromUserName,toUserName,MsgType,msgContent);
             }
@@ -74,6 +77,14 @@ public class WebChatServiceImpl implements WebChatService {
         return respXml;
     }
 
+    /**
+     * 对未知消息进行处理
+     * @param fromUserName
+     * @param toUserName
+     * @param MsgType
+     * @param msgContent
+     * @return
+     */
     public String respWithXml(String fromUserName,String toUserName,String MsgType,String msgContent) {
 
         Map<String, String> replyMap = new HashMap<String, String>();
@@ -140,5 +151,19 @@ public class WebChatServiceImpl implements WebChatService {
             e.printStackTrace();
         }
         return respXml;
+    }
+
+    @Override
+    public void insertData(int id, String content, String resName, String resType, String resImage, String resUrl, String resDesc) {
+
+        WechatHomeBean bean = new WechatHomeBean();
+        bean.setId(id);
+        bean.setContent(content);
+        bean.setResDesc(resDesc);
+        bean.setResImage(resImage);
+        bean.setResName(resName);
+        bean.setResType(resType);
+        bean.setResUrl(resUrl);
+        wechatHomeMapper.insertIntoWithContent(bean);
     }
 }
